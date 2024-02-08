@@ -25,7 +25,7 @@ public class ReservationService {
      * @return A ResponseEntity containing information about the reservation.
      */
     public ResponseEntity<String> reserveProduct(Long id) {
-        String url = STORAGE + "/api/reserve/" + id;
+        String url = STORAGE + "/store/reserve/" + id;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
@@ -42,7 +42,7 @@ public class ReservationService {
      * @return A ResponseEntity containing the product information.
      */
     public ResponseEntity<Product> getProduct(Long id) {
-        String url = STORAGE + "/api/" + id;
+        String url = STORAGE + "/store/" + id;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 

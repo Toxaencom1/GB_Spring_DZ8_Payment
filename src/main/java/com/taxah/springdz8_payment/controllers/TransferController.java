@@ -4,15 +4,11 @@ import com.taxah.springdz8_payment.aspects.TrackUserAction;
 import com.taxah.springdz8_payment.dto.TransferBalance;
 import com.taxah.springdz8_payment.dto.TransferRequest;
 import com.taxah.springdz8_payment.model.Account;
-import com.taxah.springdz8_payment.service.ReservationService;
 import com.taxah.springdz8_payment.service.TransferService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
@@ -22,8 +18,8 @@ import java.util.List;
  */
 @AllArgsConstructor
 @RestController
+@RequestMapping("/payment")
 public class TransferController {
-    private ReservationService reservationService;
     private TransferService transferService;
 
     /**
