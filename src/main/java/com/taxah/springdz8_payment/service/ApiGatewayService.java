@@ -10,12 +10,12 @@ import org.springframework.web.client.RestTemplate;
 
 
 /**
- * The ReservationService class provides methods to interact with the reservation functionalities.
+ * The ApiGatewayService class provides methods to interact with the reservation functionalities.
  */
 @AllArgsConstructor
 @Service
-public class ReservationService {
-    private static final String STORAGE = "http://localhost:8079";
+public class ApiGatewayService {
+    private static final String GATEWAY = "http://localhost:8765";
     private RestTemplate template;
 
     /**
@@ -25,7 +25,7 @@ public class ReservationService {
      * @return A ResponseEntity containing information about the reservation.
      */
     public ResponseEntity<String> reserveProduct(Long id) {
-        String url = STORAGE + "/store/reserve/" + id;
+        String url = GATEWAY + "/store/reserve/" + id;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
@@ -42,7 +42,7 @@ public class ReservationService {
      * @return A ResponseEntity containing the product information.
      */
     public ResponseEntity<Product> getProduct(Long id) {
-        String url = STORAGE + "/store/" + id;
+        String url = GATEWAY + "/store/" + id;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 

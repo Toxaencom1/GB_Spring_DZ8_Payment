@@ -21,7 +21,7 @@ import java.util.Optional;
 @Service
 public class TransferService {
     private AccountRepository repository;
-    private ReservationService reservationService;
+    private ApiGatewayService apiGatewayService;
 
     /**
      * Retrieves all accounts.
@@ -47,7 +47,7 @@ public class TransferService {
         if (userOptional.isPresent() && shopOptional.isPresent()) {
             Account user = userOptional.get();
             Account shop = shopOptional.get();
-            Product product = reservationService.getProduct(productId).getBody();
+            Product product = apiGatewayService.getProduct(productId).getBody();
             double cost;
             if (product != null) {
                 cost = product.getCost();
@@ -57,7 +57,7 @@ public class TransferService {
             if (user.getAmount() < cost) {
                 return new ResponseEntity<>("Not enough money", HttpStatus.BAD_REQUEST);
             }
-            ResponseEntity<String> answer = reservationService.reserveProduct(productId);
+            ResponseEntity<String> answer = apiGatewayService.reserveProduct(productId);
             if (answer.getStatusCode() != HttpStatus.OK) {
                 return answer;
             }
