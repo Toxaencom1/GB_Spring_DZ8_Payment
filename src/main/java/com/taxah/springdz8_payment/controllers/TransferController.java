@@ -3,8 +3,8 @@ package com.taxah.springdz8_payment.controllers;
 import com.taxah.springdz8_payment.aspects.TrackUserAction;
 import com.taxah.springdz8_payment.dto.TransferBalance;
 import com.taxah.springdz8_payment.dto.TransferRequest;
+import com.taxah.springdz8_payment.facade.TransferFacade;
 import com.taxah.springdz8_payment.model.Account;
-import com.taxah.springdz8_payment.service.TransferService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/payment")
 public class TransferController {
-    private TransferService transferService;
+    private TransferFacade transferFacade;
 
     /**
      * Retrieves all accounts.
@@ -29,7 +29,7 @@ public class TransferController {
      */
     @GetMapping("/accounts")
     public List<Account> getAll() {
-        return transferService.getAll();
+        return transferFacade.getAll();
     }
 
     /**
@@ -43,7 +43,7 @@ public class TransferController {
     public ResponseEntity<String> transferMoney(@RequestBody TransferRequest request) {
         ResponseEntity<String> answer;
         try {
-            answer = transferService.transferMoneyToShop(request.getProductId(),
+            answer = transferFacade.transferMoneyToShop(request.getProductId(),
                     request.getSenderAccountId(),
                     request.getReceiverAccountId());
             if (answer.getStatusCode() == HttpStatus.OK) {
@@ -63,7 +63,7 @@ public class TransferController {
      */
     @GetMapping("/balance")
     public TransferBalance getUserBalance() {
-        return transferService.getBalance();
+        return transferFacade.getBalance();
     }
 
 }

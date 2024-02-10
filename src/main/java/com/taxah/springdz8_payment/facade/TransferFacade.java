@@ -1,10 +1,11 @@
-package com.taxah.springdz8_payment.service;
+package com.taxah.springdz8_payment.facade;
 
 
 import com.taxah.springdz8_payment.dto.TransferBalance;
 import com.taxah.springdz8_payment.model.Account;
 import com.taxah.springdz8_payment.model.Product;
 import com.taxah.springdz8_payment.repository.AccountRepository;
+import com.taxah.springdz8_payment.service.ApiGatewayService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,11 +16,11 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * The TransferService class provides methods for handling money transfers between accounts.
+ * The TransferFacade class provides methods for handling money transfers between accounts.
  */
 @AllArgsConstructor
 @Service
-public class TransferService {
+public class TransferFacade {
     private AccountRepository repository;
     private ApiGatewayService apiGatewayService;
 
