@@ -1,2 +1,2 @@
-INSERT INTO account (name, amount) VALUES ('USER', 2500 );
-INSERT INTO account (name, amount) VALUES ('SHOP', 10000 );
+INSERT INTO account (name, amount) VALUES ('USER', 6500 );
+INSERT INTO account (name, amount) VALUES ('SHOP', 100000 );
